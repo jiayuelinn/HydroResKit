@@ -1,0 +1,23 @@
+unit_id_column: HYBAS_ID
+indicator_schema: configs/indicator_schema.yml
+output: data_work/yangtze_static_indicators.csv
+resolution_report: outputs/yangtze_static_source_resolution.csv
+audit: outputs/file_audit.csv
+duplicate_policy: error
+lower_priority_duplicate_action: rename
+renamed_column_pattern: "{source_id}__{indicator_id}"
+sources:
+  - source_id: hydrobasins_attribute
+    path: data_work/yangtze_hydrobasins_attribute_indicators.csv
+    required: true
+  - source_id: hydroatlas
+    path: data_work/yangtze_hydroatlas_indicators.csv
+    required: false
+priority:
+  h_flood_prone_terrain:
+    - hydroatlas
+    - hydrobasins_attribute
+notes:
+  - HydroATLAS inundation percentage is preferred for h_flood_prone_terrain once the real HydroATLAS table exists.
+  - The HydroBASINS UP_AREA proxy is retained as an auxiliary renamed column when HydroATLAS provides the same schema indicator.
+  - Until data_work/yangtze_hydroatlas_indicators.csv exists, the static table is built from the required HydroBASINS attribute source only.

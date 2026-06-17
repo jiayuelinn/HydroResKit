@@ -1,0 +1,24 @@
+project: HydroResKit Yangtze HydroBASINS attribute demo
+region: Yangtze River Basin
+spatial_unit: HydroBASINS level 6 sub-basins
+temporal_window: static HydroBASINS attributes
+indicator_schema: configs/indicator_schema.yml
+unit_id_column: HYBAS_ID
+normalization: minmax
+weighting: equal
+demo_indicator_table: data_work/yangtze_hydrobasins_attribute_indicators.csv
+output: outputs/yangtze_hydrobasins_attribute_scores.csv
+diagnostics:
+  missing_report: outputs/yangtze_hydrobasins_attribute_missing_report.csv
+  unit_missing_report: outputs/yangtze_hydrobasins_attribute_unit_missing_report.csv
+  weights: outputs/yangtze_hydrobasins_attribute_indicator_weights.csv
+  rank_table: outputs/yangtze_hydrobasins_attribute_rank_table.csv
+  contribution_table: outputs/yangtze_hydrobasins_attribute_indicator_contributions.csv
+  contribution_summary: outputs/yangtze_hydrobasins_attribute_contribution_summary.csv
+  missing_indicator_sensitivity: outputs/yangtze_hydrobasins_attribute_missing_indicator_sensitivity.csv
+  weighting_method_comparison: outputs/yangtze_hydrobasins_attribute_weighting_method_comparison.csv
+notes:
+  - This is a first real-data smoke test using attributes included with HydroBASINS boundaries.
+  - The current schema-aligned indicator is h_flood_prone_terrain = log1p(UP_AREA).
+  - The output should not be interpreted as a full watershed resilience assessment.
+  - The full demo must add HydroATLAS, climate, vegetation, water, population, and urban indicators.

@@ -1,0 +1,7 @@
+unit_id,h_extreme_precip_days,h_precip_variability,h_drought_intensity,h_flood_prone_terrain,e_population_density,e_built_up_fraction,e_cropland_fraction,e_night_light_intensity,s_slope_mean,s_impervious_fraction,s_ecological_fragility,s_water_stress_proxy,a_surface_water_fraction,a_green_blue_space_fraction,a_economic_proxy,a_accessibility_proxy,r_ndvi_recovery_rate,r_water_occurrence_recovery,r_night_light_recovery,r_exposure_growth_control
+demo_subbasin_001,12,0.38,4,0.72,320,0.21,0.28,18.3,6.1,0.18,0.41,0.36,0.08,0.42,14.1,0.64,0.72,0.66,0.70,0.52
+demo_subbasin_002,8,0.31,3,0.49,120,0.09,0.34,7.5,9.4,0.07,0.35,0.29,0.11,0.53,6.3,0.48,0.80,0.71,0.62,0.61
+demo_subbasin_003,16,0.44,5,0.81,640,0.37,0.19,32.7,3.8,0.32,0.58,0.43,0.05,0.31,28.4,0.76,0.55,0.49,0.58,0.37
+demo_subbasin_004,5,0.27,2,0.35,80,0.04,0.22,3.2,14.7,0.03,0.28,0.22,0.14,0.61,2.8,0.40,0.86,0.79,0.67,0.69
+demo_subbasin_005,10,0.36,6,0.56,210,0.13,0.41,11.9,7.6,0.11,0.46,0.51,0.09,0.45,10.5,0.58,0.68,0.60,0.64,0.55
+

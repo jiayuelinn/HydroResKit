@@ -1,0 +1,22 @@
+weights:
+  h_extreme_precip_days: 1
+  h_precip_variability: 1
+  h_drought_intensity: 1
+  h_flood_prone_terrain: 1
+  e_population_density: 1
+  e_built_up_fraction: 1
+  e_cropland_fraction: 1
+  e_night_light_intensity: 1
+  s_slope_mean: 1
+  s_impervious_fraction: 1
+  s_ecological_fragility: 1
+  s_water_stress_proxy: 1
+  a_surface_water_fraction: 1
+  a_green_blue_space_fraction: 1
+  a_economic_proxy: 1
+  a_accessibility_proxy: 1
+  r_ndvi_recovery_rate: 1
+  r_water_occurrence_recovery: 1
+  r_night_light_recovery: 1
+  r_exposure_growth_control: 1
+

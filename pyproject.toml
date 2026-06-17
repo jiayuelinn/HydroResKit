@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hydroreskit"
+version = "0.1.0"
+description = "A resilience-ready data workflow and assessment toolkit for watershed climate adaptation."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+  {name = "HydroResKit contributors"}
+]
+dependencies = [
+  "numpy>=1.24",
+  "pandas>=2.0",
+  "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+gee = [
+  "earthengine-api>=1.0",
+]
+geo = [
+  "geopandas>=0.14",
+  "rasterio>=1.3",
+  "xarray>=2024.1",
+  "rioxarray>=0.15",
+]
+dev = [
+  "pytest>=8.0",
+]
+
+[project.scripts]
+hydroreskit = "hydroreskit.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["hydroreskit*"]

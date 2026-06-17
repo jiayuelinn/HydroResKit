@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+message: "If you use HydroResKit, please cite the software and the associated FCS Code & Data letter once available."
+title: "HydroResKit: an open-source toolkit and resilience-ready data workflow for watershed climate adaptation assessment"
+version: 0.1.0
+date-released: 2026-05-29
+authors:
+  - name: "HydroResKit contributors"
+license: MIT

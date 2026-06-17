@@ -1,0 +1,23 @@
+project: HydroResKit Yangtze demo
+region: Yangtze River Basin
+spatial_unit: HydroBASINS level 6 sub-basins
+temporal_window: 2010-2020
+indicator_schema: configs/indicator_schema.yml
+unit_id_column: unit_id
+normalization: minmax
+weighting: equal
+demo_indicator_table: data_sample/demo_indicators.csv
+output: outputs/yangtze_demo_scores.csv
+diagnostics:
+  missing_report: outputs/yangtze_missing_report.csv
+  unit_missing_report: outputs/yangtze_unit_missing_report.csv
+  weights: outputs/yangtze_indicator_weights.csv
+  rank_table: outputs/yangtze_rank_table.csv
+  contribution_table: outputs/yangtze_indicator_contributions.csv
+  contribution_summary: outputs/yangtze_contribution_summary.csv
+  missing_indicator_sensitivity: outputs/yangtze_missing_indicator_sensitivity.csv
+  weighting_method_comparison: outputs/yangtze_weighting_method_comparison.csv
+notes:
+  - This config is a runnable scaffold using a small synthetic sample table.
+  - The production demo will replace data_sample/demo_indicators.csv with derived open-data indicators.
+  - HydroBASINS level 5 is the fallback if level 6 processing is too heavy.

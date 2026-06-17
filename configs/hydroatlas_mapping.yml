@@ -1,0 +1,48 @@
+source: HydroATLAS
+id_column: HYBAS_ID
+note: >
+  Initial HydroATLAS-to-HydroResKit schema mapping implemented in
+  hydroreskit.adapters.hydroatlas. Source-column names follow the HydroATLAS
+  Earth Engine/BasinATLAS attribute convention.
+indicators:
+  h_precip_variability:
+    source_columns: [pre_mm_s01, pre_mm_s02, pre_mm_s03, pre_mm_s04, pre_mm_s05, pre_mm_s06, pre_mm_s07, pre_mm_s08, pre_mm_s09, pre_mm_s10, pre_mm_s11, pre_mm_s12]
+    formula: std(monthly precipitation) / mean(monthly precipitation)
+    caveat: static long-term seasonality proxy
+  h_drought_intensity:
+    source_columns: [cmi_ix_syr]
+    formula: -cmi_ix_syr
+    caveat: climate moisture proxy, not event drought reconstruction
+  h_flood_prone_terrain:
+    source_columns: [inu_pc_slt]
+    formula: inu_pc_slt
+    caveat: inundation proxy, not hydraulic flood modeling
+  e_population_density:
+    source_columns: [ppd_pk_sav]
+    formula: ppd_pk_sav
+  e_built_up_fraction:
+    source_columns: [urb_pc_sse]
+    formula: urb_pc_sse
+  e_cropland_fraction:
+    source_columns: [crp_pc_sse]
+    formula: crp_pc_sse
+  s_slope_mean:
+    source_columns: [slp_dg_sav]
+    formula: slp_dg_sav
+  s_ecological_fragility:
+    source_columns: [for_pc_sse]
+    formula: 100 - for_pc_sse
+    caveat: low-forest-cover proxy
+  s_water_stress_proxy:
+    source_columns: [pet_mm_syr, aet_mm_syr]
+    formula: pet_mm_syr - aet_mm_syr
+    caveat: water-demand gap proxy
+  a_surface_water_fraction:
+    source_columns: [lka_pc_sse]
+    formula: lka_pc_sse
+  a_green_blue_space_fraction:
+    source_columns: [for_pc_sse, lka_pc_sse, wet_pc_sg1, wet_pc_sg2]
+    formula: clip(for_pc_sse + lka_pc_sse + wet_pc_sg1 + wet_pc_sg2, 0, 100)
+  a_economic_proxy:
+    source_columns: [gdp_ud_sav]
+    formula: gdp_ud_sav

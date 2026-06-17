@@ -1,0 +1,3 @@
+HYBAS_ID,pre_mm_s01,pre_mm_s02,pre_mm_s03,pre_mm_s04,pre_mm_s05,pre_mm_s06,pre_mm_s07,pre_mm_s08,pre_mm_s09,pre_mm_s10,pre_mm_s11,pre_mm_s12,cmi_ix_syr,inu_pc_slt,ppd_pk_sav,urb_pc_sse,crp_pc_sse,slp_dg_sav,for_pc_sse,pet_mm_syr,aet_mm_syr,lka_pc_sse,wet_pc_sg1,wet_pc_sg2,gdp_ud_sav
+900000001,20,25,40,60,100,150,170,150,90,50,30,20,8,1.5,120,8,35,2.5,55,950,700,2,3,1,1800
+900000002,15,18,25,45,80,130,160,140,95,45,22,16,-4,6.0,320,25,48,7.0,25,1150,520,4,2,2,4200

@@ -1,0 +1,249 @@
+schema_version: "0.1"
+description: "Initial resilience-ready indicator schema for watershed climate adaptation assessment."
+dimensions:
+  - hazard
+  - exposure
+  - sensitivity
+  - adaptive_capacity
+  - recovery
+indicators:
+  - indicator_id: h_extreme_precip_days
+    dimension: hazard
+    variable_name: extreme precipitation days
+    source_dataset: ERA5-Land or CHIRPS
+    spatial_resolution: "0.1 degree for ERA5-Land; source-dependent for alternatives"
+    temporal_resolution: daily or monthly
+    expected_direction: negative
+    aggregation_method: annual count above local percentile threshold, then multi-year mean
+    missing_value_rule: flag years with incomplete coverage; aggregate only valid years
+    uncertainty_note: threshold choice and reanalysis uncertainty affect hazard magnitude
+    citation: "Copernicus Climate Data Store ERA5-Land; CHIRPS if selected"
+
+  - indicator_id: h_precip_variability
+    dimension: hazard
+    variable_name: precipitation variability
+    source_dataset: ERA5-Land or CHIRPS
+    spatial_resolution: "0.1 degree for ERA5-Land; source-dependent for alternatives"
+    temporal_resolution: monthly
+    expected_direction: negative
+    aggregation_method: coefficient of variation of monthly precipitation
+    missing_value_rule: require at least 90 percent valid months
+    uncertainty_note: sensitive to dry-season zeros and period length
+    citation: "Copernicus Climate Data Store ERA5-Land; CHIRPS if selected"
+
+  - indicator_id: h_drought_intensity
+    dimension: hazard
+    variable_name: drought intensity
+    source_dataset: ERA5-Land or SPEI-compatible climate input
+    spatial_resolution: "0.1 degree for ERA5-Land"
+    temporal_resolution: monthly
+    expected_direction: negative
+    aggregation_method: mean annual count of months below drought threshold
+    missing_value_rule: flag incomplete monthly series
+    uncertainty_note: drought index depends on PET formulation and baseline period
+    citation: "Copernicus Climate Data Store ERA5-Land"
+
+  - indicator_id: h_flood_prone_terrain
+    dimension: hazard
+    variable_name: flood-prone terrain proxy
+    source_dataset: HydroATLAS or DEM-derived terrain attributes
+    spatial_resolution: sub-basin attributes
+    temporal_resolution: static
+    expected_direction: negative
+    aggregation_method: basin mean or area-weighted terrain flood susceptibility proxy
+    missing_value_rule: impute only when upstream/downstream neighboring units are available
+    uncertainty_note: terrain proxy is not a hydraulic flood model
+    citation: "HydroATLAS/HydroBASINS"
+
+  - indicator_id: e_population_density
+    dimension: exposure
+    variable_name: population density
+    source_dataset: WorldPop or GHSL
+    spatial_resolution: "100 m for many WorldPop products; GHSL product-dependent"
+    temporal_resolution: annual or epoch-based
+    expected_direction: negative
+    aggregation_method: area-weighted mean or total population per sub-basin
+    missing_value_rule: flag inconsistent population vintages
+    uncertainty_note: population gridding uncertainty varies by region and census support
+    citation: "WorldPop or GHSL"
+
+  - indicator_id: e_built_up_fraction
+    dimension: exposure
+    variable_name: built-up fraction
+    source_dataset: GHSL or ESA WorldCover
+    spatial_resolution: source-dependent
+    temporal_resolution: epoch-based or annual
+    expected_direction: negative
+    aggregation_method: built-up area divided by sub-basin area
+    missing_value_rule: use nearest available epoch when annual data are unavailable
+    uncertainty_note: built-up definitions differ across products
+    citation: "Global Human Settlement Layer or ESA WorldCover"
+
+  - indicator_id: e_cropland_fraction
+    dimension: exposure
+    variable_name: cropland fraction
+    source_dataset: ESA WorldCover or MODIS land cover
+    spatial_resolution: "10 m for ESA WorldCover; coarser for MODIS"
+    temporal_resolution: annual or epoch-based
+    expected_direction: negative
+    aggregation_method: cropland area divided by sub-basin area
+    missing_value_rule: use product quality mask when available
+    uncertainty_note: land-cover product choice affects class fractions
+    citation: "ESA WorldCover or MODIS land cover"
+
+  - indicator_id: e_night_light_intensity
+    dimension: exposure
+    variable_name: night-time light intensity
+    source_dataset: VIIRS Black Marble or compatible VIIRS product
+    spatial_resolution: "approximately 500 m for VNP46 products"
+    temporal_resolution: daily, monthly, or annual composite
+    expected_direction: negative
+    aggregation_method: annual median radiance aggregated to sub-basin
+    missing_value_rule: remove low-quality observations using quality flags
+    uncertainty_note: saturation, stray light, and snow/cloud filtering affect radiance
+    citation: "NASA Black Marble VIIRS"
+
+  - indicator_id: s_slope_mean
+    dimension: sensitivity
+    variable_name: mean slope
+    source_dataset: HydroATLAS or DEM-derived attributes
+    spatial_resolution: sub-basin attributes
+    temporal_resolution: static
+    expected_direction: negative
+    aggregation_method: mean slope per sub-basin
+    missing_value_rule: no imputation for missing basin geometry
+    uncertainty_note: DEM source and resolution affect slope
+    citation: "HydroATLAS/HydroBASINS"
+
+  - indicator_id: s_impervious_fraction
+    dimension: sensitivity
+    variable_name: impervious or sealed surface fraction
+    source_dataset: GHSL or impervious surface product
+    spatial_resolution: source-dependent
+    temporal_resolution: epoch-based or annual
+    expected_direction: negative
+    aggregation_method: impervious area divided by sub-basin area
+    missing_value_rule: align to closest year in the target period
+    uncertainty_note: urban surface products vary in definition and epoch
+    citation: "GHSL or selected impervious surface product"
+
+  - indicator_id: s_ecological_fragility
+    dimension: sensitivity
+    variable_name: ecological fragility proxy
+    source_dataset: MODIS NDVI and land-cover product
+    spatial_resolution: "250 m for MOD13Q1 NDVI; land-cover source-dependent"
+    temporal_resolution: 16-day to annual
+    expected_direction: negative
+    aggregation_method: low vegetation stability or high degraded land-cover fraction
+    missing_value_rule: require valid annual vegetation composites
+    uncertainty_note: proxy definition should be reported and tested
+    citation: "NASA MODIS MOD13Q1; ESA WorldCover or MODIS land cover"
+
+  - indicator_id: s_water_stress_proxy
+    dimension: sensitivity
+    variable_name: water stress proxy
+    source_dataset: ERA5-Land or GLDAS-compatible variables
+    spatial_resolution: source-dependent
+    temporal_resolution: monthly
+    expected_direction: negative
+    aggregation_method: evapotranspiration or soil-moisture anomaly proxy
+    missing_value_rule: flag short or incomplete climate records
+    uncertainty_note: proxy is not a calibrated water withdrawal model
+    citation: "ERA5-Land or GLDAS"
+
+  - indicator_id: a_surface_water_fraction
+    dimension: adaptive_capacity
+    variable_name: surface water fraction
+    source_dataset: JRC Global Surface Water
+    spatial_resolution: 30 m
+    temporal_resolution: monthly history and derived occurrence products
+    expected_direction: positive
+    aggregation_method: permanent or seasonal water area divided by sub-basin area
+    missing_value_rule: use valid water-history observations only
+    uncertainty_note: surface water is an adaptive capacity proxy, not a storage-capacity measure
+    citation: "JRC Global Surface Water"
+
+  - indicator_id: a_green_blue_space_fraction
+    dimension: adaptive_capacity
+    variable_name: green-blue space fraction
+    source_dataset: ESA WorldCover and JRC Global Surface Water
+    spatial_resolution: source-dependent
+    temporal_resolution: epoch-based or annual
+    expected_direction: positive
+    aggregation_method: vegetation and water class area divided by sub-basin area
+    missing_value_rule: harmonize land-cover and water epochs
+    uncertainty_note: class definitions affect urban green-blue estimates
+    citation: "ESA WorldCover; JRC Global Surface Water"
+
+  - indicator_id: a_economic_proxy
+    dimension: adaptive_capacity
+    variable_name: economic activity proxy
+    source_dataset: VIIRS night-time light or gridded GDP if available
+    spatial_resolution: source-dependent
+    temporal_resolution: annual
+    expected_direction: positive
+    aggregation_method: median or sum of stable night-time lights
+    missing_value_rule: mask ephemeral lights and low-quality observations
+    uncertainty_note: night lights are an imperfect proxy for adaptive resources
+    citation: "NASA Black Marble VIIRS or selected gridded GDP product"
+
+  - indicator_id: a_accessibility_proxy
+    dimension: adaptive_capacity
+    variable_name: accessibility proxy
+    source_dataset: road density or settlement accessibility dataset
+    spatial_resolution: source-dependent
+    temporal_resolution: static or epoch-based
+    expected_direction: positive
+    aggregation_method: road length per area or travel-time proxy per sub-basin
+    missing_value_rule: flag unavailable transport data
+    uncertainty_note: proxy should be omitted when comparable open transport data are unavailable
+    citation: "selected open transport/accessibility dataset"
+
+  - indicator_id: r_ndvi_recovery_rate
+    dimension: recovery
+    variable_name: vegetation recovery rate
+    source_dataset: MODIS MOD13Q1
+    spatial_resolution: 250 m
+    temporal_resolution: 16-day to annual
+    expected_direction: positive
+    aggregation_method: post-stress NDVI recovery slope or anomaly rebound
+    missing_value_rule: require event window and valid quality mask
+    uncertainty_note: recovery depends on event definition and phenology correction
+    citation: "NASA MODIS MOD13Q1"
+
+  - indicator_id: r_water_occurrence_recovery
+    dimension: recovery
+    variable_name: water occurrence recovery
+    source_dataset: JRC Global Surface Water
+    spatial_resolution: 30 m
+    temporal_resolution: monthly
+    expected_direction: positive
+    aggregation_method: return rate of water occurrence after dry or flood anomaly
+    missing_value_rule: require valid monthly water observations in event window
+    uncertainty_note: surface water detectability varies by season and sensor condition
+    citation: "JRC Global Surface Water"
+
+  - indicator_id: r_night_light_recovery
+    dimension: recovery
+    variable_name: socio-economic activity recovery proxy
+    source_dataset: VIIRS Black Marble
+    spatial_resolution: "approximately 500 m"
+    temporal_resolution: daily, monthly, or annual composite
+    expected_direction: positive
+    aggregation_method: rebound of stable lights after hazard window
+    missing_value_rule: use quality flags and remove ephemeral light artifacts
+    uncertainty_note: night-light recovery is a proxy and should be interpreted cautiously
+    citation: "NASA Black Marble VIIRS"
+
+  - indicator_id: r_exposure_growth_control
+    dimension: recovery
+    variable_name: exposure growth control
+    source_dataset: WorldPop/GHSL and GHSL built-up data
+    spatial_resolution: source-dependent
+    temporal_resolution: annual or epoch-based
+    expected_direction: positive
+    aggregation_method: inverse of exposure growth in high-hazard zones
+    missing_value_rule: require consistent baseline and end-year products
+    uncertainty_note: depends on hazard-zone definition and population/built-up product choice
+    citation: "WorldPop or GHSL; GHSL built-up"
+

@@ -1,0 +1,5 @@
+panel,input,status,note
+a,data_work\yangtze_hydrobasins_l6.geojson,drawn,"186 HydroBASINS level-6 Yangtze units; longitude/latitude axes, thick basin boundary, dashed sub-basin boundaries, and below-frame boundary legend shown."
+b,outputs\yangtze_static_scores.csv,drawn,"Four static dimensions: hazard, exposure, sensitivity, adaptive_capacity."
+c,outputs\yangtze_static_scores.csv,drawn,Static resilience score range: 0.219-0.717; boundary legend below map frame and colorbar aligned below legend.
+d,outputs\yangtze_static_missing_indicator_sensitivity.csv,drawn,"12 dropped-indicator sensitivity rows; top 8 displayed as tornado-lollipop plot with mean, IQR, 5-95% range, and mean rank-delta labels."

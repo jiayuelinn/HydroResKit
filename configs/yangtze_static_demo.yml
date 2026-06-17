@@ -1,0 +1,24 @@
+project: HydroResKit Yangtze static-indicator demo
+region: Yangtze River Basin
+spatial_unit: HydroBASINS level 6 sub-basins
+temporal_window: static and long-term source attributes
+indicator_schema: configs/indicator_schema.yml
+unit_id_column: HYBAS_ID
+normalization: minmax
+weighting: equal
+demo_indicator_table: data_work/yangtze_static_indicators.csv
+output: outputs/yangtze_static_scores.csv
+diagnostics:
+  missing_report: outputs/yangtze_static_missing_report.csv
+  unit_missing_report: outputs/yangtze_static_unit_missing_report.csv
+  weights: outputs/yangtze_static_indicator_weights.csv
+  rank_table: outputs/yangtze_static_rank_table.csv
+  contribution_table: outputs/yangtze_static_indicator_contributions.csv
+  contribution_summary: outputs/yangtze_static_contribution_summary.csv
+  missing_indicator_sensitivity: outputs/yangtze_static_missing_indicator_sensitivity.csv
+  weighting_method_comparison: outputs/yangtze_static_weighting_method_comparison.csv
+notes:
+  - This config points to the merged static indicator table keyed by HYBAS_ID.
+  - At present the merged table contains the real HydroBASINS smoke-test indicator and audit attributes.
+  - After a real HydroATLAS export is available, rerun scripts/merge_indicator_tables.py with both HydroBASINS and HydroATLAS-derived tables.
+  - The current output is not a full watershed resilience assessment.

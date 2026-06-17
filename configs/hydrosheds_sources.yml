@@ -1,0 +1,46 @@
+sources:
+  hydrobasins_as_standard_lev01_12:
+    name: HydroBASINS Asia standard levels 1-12
+    provider: HydroSHEDS
+    url: https://data.hydrosheds.org/file/hydrobasins/standard/hybas_as_lev01-12_v1c.zip
+    official_page: https://www.hydrosheds.org/products/hydrobasins
+    intended_use: Official source package for preparing Yangtze River Basin sub-basin units.
+    redistribution_note: Do not redistribute the raw package in this repository; keep local download paths outside release artifacts.
+  hydrobasins_as_lake_lev01_12:
+    name: HydroBASINS Asia customized with lakes levels 1-12
+    provider: HydroSHEDS
+    url: https://data.hydrosheds.org/file/hydrobasins/customized_with_lakes/hybas_lake_as_lev01-12_v1c.zip
+    official_page: https://www.hydrosheds.org/products/hydrobasins
+    intended_use: Optional source package if lake-customized basin units are preferred.
+    redistribution_note: Do not redistribute the raw package in this repository.
+  hydroatlas_techdoc:
+    name: HydroATLAS technical documentation
+    provider: HydroSHEDS
+    url: https://data.hydrosheds.org/file/technical-documentation/HydroATLAS_TechDoc_v10_1.pdf
+    official_page: https://www.hydrosheds.org/hydroatlas
+    intended_use: Documentation for HydroATLAS attributes and methodology.
+    redistribution_note: Cite official HydroSHEDS documentation rather than redistributing.
+  hydroatlas_basinatlas_gdb_figshare:
+    name: BasinATLAS Data v10 geodatabase
+    provider: HydroSHEDS / Figshare
+    url: https://ndownloader.figshare.com/files/20082137
+    official_page: https://figshare.com/articles/dataset/HydroATLAS_version_1_0/9890531
+    intended_use: Full HydroATLAS BasinATLAS source for local cropping to Yangtze level 6 attributes.
+    redistribution_note: Do not redistribute the raw package; crop locally and release only permitted derived indicators.
+    size_bytes: 2695658577
+    md5: 69af94baee68da5a3f80f09e7b85bd04
+  hydroatlas_basinatlas_shp_figshare:
+    name: BasinATLAS Data v10 shapefiles
+    provider: HydroSHEDS / Figshare
+    url: https://ndownloader.figshare.com/files/20087237
+    official_page: https://figshare.com/articles/dataset/HydroATLAS_version_1_0/9890531
+    intended_use: Alternative full HydroATLAS BasinATLAS source if geodatabase reading is unavailable.
+    redistribution_note: Do not redistribute the raw package; crop locally and release only permitted derived indicators.
+    size_bytes: 4276492333
+  hydroatlas_gee_basins_level06:
+    name: HydroATLAS Basins level 06 in Google Earth Engine
+    provider: WWF HydroSHEDS / Google Earth Engine Data Catalog
+    url: https://developers.google.com/earth-engine/datasets/catalog/WWF_HydroATLAS_v1_Basins_level06
+    official_page: https://www.hydrosheds.org/hydroatlas
+    intended_use: Export HydroATLAS level 6 attributes for the prepared Yangtze HydroBASINS units.
+    redistribution_note: Do not redistribute full source tables; release scripts, mapping metadata, and small derived/demo outputs only when terms allow.
