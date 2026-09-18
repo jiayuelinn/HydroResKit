@@ -4,6 +4,12 @@ HydroResKit is an open-source toolkit and resilience-ready data workflow for wat
 
 The project is designed for a Frontiers of Computer Science Code & Data letter. It does not aim to replace hydrological datasets such as CAMELS, CCAM, Caravan, or HydroATLAS, nor model-building frameworks such as HydroMT. Instead, it provides a task-specific layer that maps open Earth-science and socio-environmental data into a reproducible watershed resilience schema.
 
+## Associated publication
+
+Paper describing this work has been received in *Frontiers of Computer Science* (FCS) special column “Code & Data in Earth Science”.
+
+**Cited as:** Jiayue LIN, Ling XU, Yi’an HUANG, Bin QIU, Xiangfeng HUANG, Shijun CHEN. HydroResKit: a schema-driven workflow for heterogeneous data integration in basin-scale hydrological resilience assessment. *Frontiers of Computer Science*, 2026. DOI: [10.1007/s11704-026-61264-8](https://doi.org/10.1007/s11704-026-61264-8)
+
 ## Core Capabilities
 
 - Resilience schema for hazard, exposure, sensitivity, adaptive capacity, and recovery.
